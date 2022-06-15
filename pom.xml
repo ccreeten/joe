@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.cc.joe</groupId>
+    <artifactId>joe</artifactId>
+    <version>0.0.1</version>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <kaitai.url>https://github.com/kaitai-io/kaitai_struct_compiler/releases/download/${kaitai-struct.version}/kaitai-struct-compiler-${kaitai-struct.version}.zip</kaitai.url>
+        <kaitai-maven-plugin.version>0.1.7-SNAPSHOT</kaitai-maven-plugin.version>
+        <kaitai-struct.version>0.9</kaitai-struct.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.kaitai</groupId>
+            <artifactId>kaitai-struct-runtime</artifactId>
+            <version>${kaitai-struct.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>18</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>name.valery1707.kaitai</groupId>
+                <artifactId>kaitai-maven-plugin</artifactId>
+                <version>${kaitai-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
